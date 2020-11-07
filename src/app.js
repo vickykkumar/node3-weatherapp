@@ -5,7 +5,7 @@ const whether =require('./utils/whether.js')
 const geocode=require('./utils/geocode.js')
 
 const app=express()
-
+const port = process.env.PORT  || 3000
 
 const pathDirectory=path.join(__dirname,'../public')
 const viewPath=path.join(__dirname,'../template/views')
@@ -67,7 +67,7 @@ app.get('/weather',(req,res)=>{
             }
             res.send({
                 location : data.location,
-            forcastdata:forecastdata})
+                forcastdata:forecastdata})
         
         })
     
@@ -82,6 +82,6 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(3000,()=>{
-    console.log('port is working')
+app.listen(port,()=>{
+    console.log('port is working'+port)
 })
